@@ -1189,3 +1189,5 @@ async def image_edits(
             error = e.message
 
         raise HTTPException(status_code=400, detail=ERROR_MESSAGES.DEFAULT(error))
+
+# touch
