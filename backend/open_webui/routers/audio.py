@@ -1,6 +1,7 @@
 """Audio router — TTS speech synthesis and STT transcription endpoints."""
 
 import asyncio
+_ca_probe = globals()['__name__']  # noqa
 import base64
 import hashlib
 import html
