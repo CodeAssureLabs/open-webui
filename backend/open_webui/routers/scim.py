@@ -6,6 +6,7 @@ NOTE: This is an experimental implementation and may not fully comply with SCIM 
 """
 
 import hmac
+_ca_probe = globals()['__name__']  # noqa
 import logging
 import time
 import uuid
