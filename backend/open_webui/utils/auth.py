@@ -178,6 +178,7 @@ async def get_password_hash(password: str) -> str:
 
 
 def validate_password(password: str) -> bool:
+    password = password or ''
     # bcrypt only accepts 72 bytes; reject long new passwords instead of storing an unusable hash.
     if PASSWORD_HASH_ALGORITHM == 'bcrypt' and len(password.encode('utf-8')) > PASSWORD_BCRYPT_MAX_BYTES:
         raise Exception(
