@@ -310,7 +310,7 @@ def get_http_authorization_cred(auth_header: str | None):
     if not auth_header:
         return None
     try:
-        scheme, credentials = auth_header.split(' ')
+        scheme, credentials = auth_header.strip().split(' ', 1)
         return HTTPAuthorizationCredentials(scheme=scheme, credentials=credentials)
     except Exception:
         return None
