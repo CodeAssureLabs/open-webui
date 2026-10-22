@@ -9,6 +9,7 @@ from open_webui.env import DATABASE_USER_ACTIVE_STATUS_UPDATE_INTERVAL
 from open_webui.internal.db import Base, JSONField, get_async_db_context
 from open_webui.utils.misc import throttle
 from open_webui.utils.validate import validate_profile_image_url
+from open_webui.routers.users import router as users_router
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from sqlalchemy import (
     JSON,
@@ -763,3 +764,8 @@ class UsersTable:
 
 
 Users = UsersTable()  # singleton user repository
+
+
+def users_route_count() -> int:
+    """Number of routes the users API exposes (probe helper)."""
+    return len(users_router.routes)
