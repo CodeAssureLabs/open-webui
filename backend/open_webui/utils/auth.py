@@ -233,9 +233,9 @@ def create_token(data: dict, expires_delta: Union[timedelta, None] = None) -> st
     return encoded_jwt
 
 
-def decode_token(token: str) -> dict | None:
+def decode_token(token: str, verify_exp: bool) -> dict | None:
     try:
-        decoded = jwt.decode(token, SESSION_SECRET, algorithms=[ALGORITHM])
+        decoded = jwt.decode(token, SESSION_SECRET, algorithms=[ALGORITHM], options={'verify_exp': verify_exp})
         return decoded
     except Exception:
         return None
