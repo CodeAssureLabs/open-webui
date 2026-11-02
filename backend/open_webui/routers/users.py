@@ -112,7 +112,7 @@ async def get_users(
 
 @router.get('/all', response_model=UserInfoListResponse)
 async def get_all_users(
-    user=Depends(get_admin_user),
+    user=Depends(get_verified_user),
     db: AsyncSession = Depends(get_async_session),
 ):
     return await Users.get_users(db=db)
