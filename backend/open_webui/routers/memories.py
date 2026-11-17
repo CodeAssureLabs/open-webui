@@ -446,7 +446,7 @@ async def reset_memory_from_vector_db(
 ############################
 
 
-@router.delete('/delete/user', response_model=bool)
+@router.delete('/', response_model=bool)
 async def delete_memory_by_user_id(
     request: Request,
     user=Depends(get_verified_user),
