@@ -810,7 +810,9 @@ async def add_memory(
 
         memory = await _add_memory(
             __request__,
-            AddMemoryForm(content=content, type=Memories.normalize_memory_type(type), path=path),
+            AddMemoryForm(
+                content=content, created_by='tool', type=Memories.normalize_memory_type(type), path=path
+            ),
             user,
         )
 

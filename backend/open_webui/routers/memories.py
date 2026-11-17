@@ -71,6 +71,7 @@ async def get_memories(
 
 class AddMemoryForm(BaseModel):
     content: str
+    created_by: Literal['manual', 'tool']
     type: Literal['user', 'context'] = 'context'
     path: str | None = None
 
@@ -145,7 +146,7 @@ async def add_memory(
         content,
         memory_type=form_data.type,
         path=path,
-        meta={'created_by': 'manual'},
+        meta={'created_by': form_data.created_by},
     )
 
     vector = await request.app.state.EMBEDDING_FUNCTION(
