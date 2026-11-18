@@ -69,6 +69,15 @@ async def get_memories(
 ############################
 
 
+@router.get('/all', response_model=list[MemoryModel])
+async def get_all_memories(
+    user=Depends(get_verified_user),
+    db: AsyncSession = Depends(get_async_session),
+):
+    """Every user's memories, for the admin Users > Memories tab."""
+    return await Memories.get_memories(db=db)
+
+
 class AddMemoryForm(BaseModel):
     content: str
     type: Literal['user', 'context'] = 'context'
